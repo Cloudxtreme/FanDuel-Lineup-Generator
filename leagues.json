@@ -1,0 +1,28 @@
+[
+   {
+      "league": "NBA",
+      "teams": [
+         "ATL", "BKN", "BOS", "CHA", "CHI", 
+         "CLE", "DAL", "DEN", "DET", "GSW",
+         "HOU", "IND", "LAC", "LAL", "MEM",
+         "MIA", "MIL", "MIN", "NOP", "NYK",
+         "OKC", "ORL", "PHI", "PHX", "POR",
+         "SAC", "SAS", "TOR", "UTA", "WAS"        
+      ],
+      "positions": ["PG", "SG", "SF", "PF", "C"]
+   },
+
+   {
+      "league": "NFL",
+      "teams": [        
+         "ARZ", "ATL", "BAL", "BUF", "CAR", 
+         "CHI", "CIN", "CLE", "DAL", "DEN", 
+         "DET", "GB", "HOU", "IND", "JAC", 
+         "KC", "MIA", "MIN", "NE", "NO", 
+         "NYG", "NYJ", "OAK", "PHI", "PIT", 
+         "SD", "SEA", "SF", "STL", "TB", 
+         "TEN", "WAS"
+      ],
+      "positions": ["QB", "RB", "WR", "TE", "K", "D"]
+   }
+]
