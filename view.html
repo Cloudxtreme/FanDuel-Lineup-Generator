@@ -7,11 +7,14 @@
    
    <!--jQuery-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-   <!-- Bootstrap CSS -->
+   
+   <!--AngularJS-->
+   <script src="https://code.angularjs.org/1.4.5/angular.min.js"></script>
+   
+   <!--Bootstrap CSS-->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-   <!-- Bootstrap JS -->
+   <!--Bootstrap JS-->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    
    <!--[if lt IE 9]>
@@ -19,15 +22,9 @@
    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
    <![endif]-->
    
-   <!--AngularJS-->
-   <script src="https://code.angularjs.org/1.4.5/angular.min.js"></script>
-   <script src="main.js"></script>
-   
-   <style>
-      body {
-         padding-top: 25px;
-      }
-   </style>
+
+   <script src="app.js"></script>
+   <script src="controller.js"></script>
    
 </head>
 
@@ -36,19 +33,21 @@
 
    <h2>Insert Players</h2>
    
-   <div class="radio">
-      <label>
-         <input type="radio" name="optionsRadios" id="optionsRadios1" value="basketball">
-         NBA
-      </label>
+   <div ng-init="radio=basketball">
+      <div class="radio">
+         <label>
+            <input id="basketball" type="radio" value="basketball" ng-model="radio" ng-change="radChange(radio)" ng-checked=true>
+            NBA
+         </label>
+      </div>
+      <div class="radio">
+         <label>
+            <input id="football" type="radio" value="football" ng-model="radio" ng-change="radChange(radio)">
+            NFL
+         </label>
+      </div>
    </div>
-   <div class="radio">
-      <label>
-         <input type="radio" name="optionsRadios" id="optionsRadios2" value="football">
-         NFL
-      </label>
-   </div>
-
+   
    <form class="form-inline" role="form">
       <div class="form-group">
          <label for="playerName">Name:</label>
