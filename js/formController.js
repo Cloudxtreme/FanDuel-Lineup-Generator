@@ -1,35 +1,27 @@
 app.controller('formController', ['$scope', '$http', function($scope, $http) {
 
-   $scope.radio = "basketball";
+   $scope.radio;
    $scope.teams;
    $scope.positions;
    
-   var fillForm = function(sport){
+   var fillForm = function(league){
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/Daily-Fantasy-Lineup-Generator/master/leagues.json")
-      .success(function(response){
-         if(sport === "basketball")
-         {
-            $scope.teams = response[0].teams;
-            $scope.positions = response[0].positions;
-         }
-         else
-         {
-            $scope.teams = response[1].teams;
-            $scope.positions = response[1].positions;
-         }
+      .success(function(response){   
+         $scope.teams = response[league].teams;
+         $scope.positions = response[league].positions;
       });
    };
    fillForm($scope.radio);
    
-   $scope.radChange = function(sport){
+   $scope.radChange = function(league){
       if(window.confirm("This will erase your current table. Continue?"))
       {
          //clearTable();
-         fillForm(sport);
+         fillForm(league);
       }
       else
       {
-         $scope.radio = ($scope.radio == "basketball" ? "football" : "basketball");        
+         $scope.radio = ($scope.radio == "NBA" ? "NFL" : "NBA");        
       }
    };
    
