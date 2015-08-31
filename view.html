@@ -44,7 +44,7 @@
    <div ng-controller="formController">
       <h2 class="text-center">Insert Players</h2>
       
-      <div ng-init="radio=basketball" class="text-center">
+      <div class="text-center">
          <div class="radio">
             <label>
                <input id="basketball" type="radio" value="basketball" ng-model="radio" ng-change="radChange(radio)" ng-checked=true>
@@ -68,14 +68,14 @@
          <div class="form-group">
             <label for="playerTeam">Team: </label>
             <select class="form-control" id="playerTeam">   
-               <option></option>     
+               <option ng-repeat="team in teams">{{team}}</option>     
             </select>
          </div>
          
          <div class="form-group">
             <label for="playerPosition">Position:</label>
             <select class="form-control" id="playerPosition">
-               <option></option>
+               <option ng-repeat="position in positions">{{position}}</option>
             </select>
          </div>
          
