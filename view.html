@@ -23,65 +23,102 @@
    <![endif]-->
    
 
-   <script src="app.js"></script>
-   <script src="controller.js"></script>
+   <script src="js/app.js"></script>
+   <script src="js/formController.js"></script>
+   <script src="js/tableController.js"></script>
+   <!--<script src="js/resultsController.js"></script>-->
+   
+   <style>
+   .table th, .table td, table, .table {
+      width: auto !important;
+      margin: auto;
+      text-align: center; 
+   }
+   </style>
    
 </head>
 
 <body>
-<div class="container text-center" ng-app="lineupApp" ng-controller="lineupController">
+<div class="container" ng-app="lineupApp">
 
-   <h2>Insert Players</h2>
-   
-   <div ng-init="radio=basketball">
-      <div class="radio">
-         <label>
-            <input id="basketball" type="radio" value="basketball" ng-model="radio" ng-change="radChange(radio)" ng-checked=true>
-            NBA
-         </label>
-      </div>
-      <div class="radio">
-         <label>
-            <input id="football" type="radio" value="football" ng-model="radio" ng-change="radChange(radio)">
-            NFL
-         </label>
-      </div>
-   </div>
-   
-   <form class="form-inline" role="form">
-      <div class="form-group">
-         <label for="playerName">Name:</label>
-         <input type="text" class="form-control" id="playerName" placeholder="Enter player name">
-      </div>
+   <div ng-controller="formController">
+      <h2 class="text-center">Insert Players</h2>
       
-      <div class="form-group">
-         <label for="playerTeam">Team: </label>
-         <select class="form-control" id="playerTeam">   
-            <option></option>     
-         </select>
-      </div>
-      
-      <div class="form-group">
-         <label for="playerPosition">Position:</label>
-         <select class="form-control" id="playerPosition">
-            <option></option>
-         </select>
-      </div>
-      
-      <div class="form-group">
-         <label for="playerSalary">Salary:</label>
-         <div class="input-group">
-            <div class="input-group-addon">$</div>
-            <input type="text" class="form-control" id="playerSalary" placeholder="Salary">
-            <div class="input-group-addon">.00</div>
+      <div ng-init="radio=basketball" class="text-center">
+         <div class="radio">
+            <label>
+               <input id="basketball" type="radio" value="basketball" ng-model="radio" ng-change="radChange(radio)" ng-checked=true>
+               NBA
+            </label>
+         </div>
+         <div class="radio">
+            <label>
+               <input id="football" type="radio" value="football" ng-model="radio" ng-change="radChange(radio)">
+               NFL
+            </label>
          </div>
       </div>
+      
+      <form class="form-inline text-center" role="form">
+         <div class="form-group">
+            <label for="playerName">Name:</label>
+            <input type="text" class="form-control" id="playerName" placeholder="Enter player name">
+         </div>
+         
+         <div class="form-group">
+            <label for="playerTeam">Team: </label>
+            <select class="form-control" id="playerTeam">   
+               <option></option>     
+            </select>
+         </div>
+         
+         <div class="form-group">
+            <label for="playerPosition">Position:</label>
+            <select class="form-control" id="playerPosition">
+               <option></option>
+            </select>
+         </div>
+         
+         <div class="form-group">
+            <label for="playerSalary">Salary:</label>
+            <div class="input-group">
+               <div class="input-group-addon">$</div>
+               <input type="text" class="form-control" id="playerSalary" placeholder="Salary">
+               <div class="input-group-addon">.00</div>
+            </div>
+         </div>
 
-      <a class="btn btn-primary">Insert</a>
-   </form>
+         <a class="btn btn-primary">Insert</a>
+         <a class="btn btn-warning">Generate</a>
+      </form>
+   
+   </div>
+   
+   <br>
+   
+   <table class="table table-bordered table-hover" ng-controller="tableController">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LeBron James</td>
+        <td>CLE</td>
+        <td>SF</td>
+        <td>$10,200</td>
+      </tr>
+    </tbody>
+  </table>
 
 
 </div>
+
+<br>
 
 </body>
 </html>
