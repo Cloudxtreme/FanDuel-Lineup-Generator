@@ -1,6 +1,6 @@
 app.controller('formController', ['$scope', '$http', function($scope, $http) {
 
-   $scope.radio; // NBA or NFL
+   $scope.radio = 'NBA';
    $scope.name;
    $scope.team;
    $scope.position; 
@@ -8,18 +8,29 @@ app.controller('formController', ['$scope', '$http', function($scope, $http) {
    $scope.teams; // Array containing all teams
    $scope.positions; // Array containing all positions
    
-   $scope.radChange = function(league){
+   $scope.radChange = function(){
       if(window.confirm("This will erase your current table. Continue?"))
       {
          //clearTable();
          $scope.name = "";
          $scope.salary = "";
-         fillForm(league);
+         fillForm($scope.radio);
       }
       else
       {
          $scope.radio = ($scope.radio == "NBA" ? "NFL" : "NBA");        
       }
+   };
+   
+   $scope.validate = function(){
+      jQuery("#error-msg").hide();
+      if(($scope.name === "") || (isNaN($scope.salary)))
+      {
+         jQuery("#error-msg").fadeIn(500);
+      }
+      else {
+         //insert($scope.name, $scope.team, $scope.position, $scope.salary);
+      }        
    };
    
    var fillForm = function(league){
@@ -32,5 +43,6 @@ app.controller('formController', ['$scope', '$http', function($scope, $http) {
       });
    };
    fillForm($scope.radio);
+
  
 }]);

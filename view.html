@@ -34,67 +34,80 @@
       margin: auto;
       text-align: center; 
    }
+   .alert {
+      display: inline-block;
+   }
+   .close {
+      padding-left: 5px;
+   }
+   #error-msg {
+      display: none;
+   }
    </style>
    
 </head>
 
-<body>
-<div class="container" ng-app="lineupApp" ng-init="radio='NBA'">
+<body class="text-center">
+<div class="container" ng-app="lineupApp">
 
    <div ng-controller="formController">
-      <h2 class="text-center">Insert Players</h2>
+      <h2>Insert Players</h2>
       
-      <div class="text-center">
-         <div class="radio">
-            <label>
-               <input type="radio" value="NBA" ng-model="radio" ng-change="radChange(radio)">
-               NBA
-            </label>
-         </div>
-         <div class="radio">
-            <label>
-               <input type="radio" value="NFL" ng-model="radio" ng-change="radChange(radio)">
-               NFL
-            </label>
-         </div>
+      <div class="radio">
+         <label>
+            <input type="radio" value="NBA" ng-model="radio" ng-change="radChange()">
+            NBA
+         </label>
+      </div>
+      <div class="radio">
+         <label>
+            <input type="radio" value="NFL" ng-model="radio" ng-change="radChange()">
+            NFL
+         </label>
       </div>
       
-      <form class="form-inline text-center" role="form">
+      <form class="form-inline" role="form" novalidate>
          <div class="form-group">
-            <label for="playerName">Name:</label>
+            <label>Name:</label>
             <input type="text" class="form-control" placeholder="Enter player name" ng-model="name">
          </div>
          
          <div class="form-group">
-            <label for="playerTeam">Team: </label>
+            <label>Team:</label>
             <select class="form-control" ng-model="team">   
                <option ng-repeat="team in teams">{{ team }}</option>     
             </select>
          </div>
          
          <div class="form-group">
-            <label for="playerPosition">Position:</label>
+            <label>Position:</label>
             <select class="form-control" ng-model="position">
                <option ng-repeat="position in positions">{{ position }}</option>
             </select>
          </div>
          
          <div class="form-group">
-            <label for="playerSalary">Salary:</label>
+            <label>Salary:</label>
             <div class="input-group">
                <div class="input-group-addon">$</div>
-               <input type="text" class="form-control" placeholder="Salary" ng-model="salary">
-               <div class="input-group-addon">.00</div>
+               <input type="text" class="form-control" placeholder="Salary (Digits Only)" ng-model="salary">
             </div>
          </div>
 
-         <a class="btn btn-primary">Insert</a>
+         <a class="btn btn-primary" ng-click="validate()">Insert</a>
          <a class="btn btn-warning">Generate</a>
       </form>
    
    </div>
    
    <br>
+   
+   <div id="error-msg">
+      <div class="alert alert-danger">
+         <a href="#" class="close" onclick="$('#error-msg').fadeOut(500)">&times;</a>
+         <strong>ERROR: </strong> You didn't fill out the form correctly.
+      </div>
+   </div>
    
    <table class="table table-bordered table-hover" ng-controller="tableController">
     <thead>
