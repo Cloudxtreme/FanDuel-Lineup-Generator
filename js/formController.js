@@ -1,4 +1,7 @@
-app.controller('formController', ['$scope', '$http', function($scope, $http) {
+app.controller('formController', ['$scope', '$http', 'tableService', 
+function($scope, $http, tableService) {
+
+   console.log("formController working");
 
    $scope.radio = 'NBA';
    $scope.name;
@@ -23,12 +26,14 @@ app.controller('formController', ['$scope', '$http', function($scope, $http) {
    };
    
    $scope.validate = function(){
-      jQuery("#error-msg").hide();
-      if(($scope.name === "") || (isNaN($scope.salary)))
+      jQuery("#error-msg").slideUp();
+      if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === "")))
       {
-         jQuery("#error-msg").fadeIn(500);
+         jQuery("#error-msg").slideDown(500);
       }
       else {
+         console.log($scope.name);
+         console.log($scope.salary);
          //insert($scope.name, $scope.team, $scope.position, $scope.salary);
       }        
    };
