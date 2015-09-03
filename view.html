@@ -93,7 +93,7 @@
             </div>
          </div>
 
-         <a class="btn btn-primary" ng-click="validate()">Insert</a>
+         <a class="btn btn-primary" ng-click="validateForm()">Insert</a>
          <a class="btn btn-warning">Generate</a>
       </form>
    
@@ -116,11 +116,11 @@
          </tr>
        </thead>
        <tbody>
-         <tr>
-           <td>LeBron James</td>
-           <td>CLE</td>
-           <td>SF</td>
-           <td>$10,200</td>
+         <tr ng-repeat="row in rows">
+            <td id="name">{{row.name}}</td>
+            <td id="team">{{row.team}}</td>
+            <td id="position">{{row.position}}</td>
+            <td id="salary">{{row.salary | currency}}</td>
          </tr>
        </tbody>
      </table>

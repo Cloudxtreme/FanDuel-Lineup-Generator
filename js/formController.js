@@ -3,20 +3,30 @@ function($scope, $http, tableService) {
 
    console.log("formController working");
 
+   // radio button
    $scope.radio = 'NBA';
+   
+   // form values
    $scope.name;
    $scope.team;
    $scope.position; 
    $scope.salary;
-   $scope.teams; // Array containing all teams
-   $scope.positions; // Array containing all positions
    
+   // Array containing all teams in select box
+   $scope.teams;
+   
+   // Array containing all positions in select box
+   $scope.positions; 
+   
+   // the table
+   $scope.rows = tableService.rows;
+   
+   // called when user changes radio button (NBA or NFL)
    $scope.radChange = function(){
       if(window.confirm("This will erase your current table. Continue?"))
       {
-         //clearTable();
-         $scope.name = "";
-         $scope.salary = "";
+         tableService.clearTable();
+         resetForm();
          fillForm($scope.radio);
       }
       else
@@ -25,16 +35,15 @@ function($scope, $http, tableService) {
       }
    };
    
-   $scope.validate = function(){
+   $scope.validateForm = function(){
       jQuery("#error-msg").slideUp();
       if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === "")))
       {
          jQuery("#error-msg").slideDown(500);
       }
       else {
-         console.log($scope.name);
-         console.log($scope.salary);
-         //insert($scope.name, $scope.team, $scope.position, $scope.salary);
+         tableService.insert($scope.name, $scope.team, $scope.position, $scope.salary);
+         resetForm();
       }        
    };
    
@@ -48,6 +57,12 @@ function($scope, $http, tableService) {
       });
    };
    fillForm($scope.radio);
-
+   
+   var resetForm = function() {
+      $scope.name = "";
+      $scope.salary = "";
+      $scope.team = $scope.teams[0];
+      $scope.position = $scope.positions[0];
+   };
  
 }]);

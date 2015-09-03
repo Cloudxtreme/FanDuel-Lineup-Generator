@@ -1,4 +1,5 @@
 app.factory('tableService', [function() {
+
    console.log("tableService working");
    
    var rows = [];
@@ -14,9 +15,14 @@ app.factory('tableService', [function() {
       rows.push(new row(name, team, position, salary));
    }
    
+   var clearTable = function() {
+      rows.length = 0;
+   }
+   
    return {
       rows: rows,
-      insert: insert
-   };
+      insert: insert,
+      clearTable: clearTable
+   }
    
 }]);
