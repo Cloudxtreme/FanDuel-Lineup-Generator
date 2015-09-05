@@ -26,7 +26,7 @@ function($scope, $http, tableService) {
       if(window.confirm("This will erase your current table. Continue?"))
       {
          tableService.clearTable();
-         resetForm();
+         jQuery("#error-msg").hide();
          fillForm($scope.radio);
       }
       else
@@ -36,10 +36,10 @@ function($scope, $http, tableService) {
    };
    
    $scope.validateForm = function(){
-      jQuery("#error-msg").slideUp();
+      jQuery("#error-msg").fadeOut();
       if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === "")))
       {
-         jQuery("#error-msg").slideDown(500);
+         jQuery("#error-msg").fadeIn(500);
       }
       else {
          tableService.insert($scope.name, $scope.team, $scope.position, $scope.salary);
@@ -52,8 +52,7 @@ function($scope, $http, tableService) {
       .success(function(response){   
          $scope.teams = response[league].teams;
          $scope.positions = response[league].positions;   
-         $scope.team = response[league].teams[0];
-         $scope.position = response[league].positions[0];
+         resetForm();
       });
    };
    fillForm($scope.radio);

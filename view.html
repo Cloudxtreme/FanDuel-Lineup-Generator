@@ -101,7 +101,7 @@
    
       <div id="error-msg">
          <div class="alert alert-danger">
-            <a href="#" class="close" onclick="jQuery('#error-msg').slideUp(500)">&times;</a>
+            <a href="#" class="close" onclick="jQuery('#error-msg').fadeOut(500)">&times;</a>
             <strong>ERROR: </strong> You didn't fill out the form correctly.
          </div>
       </div>
@@ -120,7 +120,7 @@
             <td id="name">{{row.name}}</td>
             <td id="team">{{row.team}}</td>
             <td id="position">{{row.position}}</td>
-            <td id="salary">{{row.salary | currency}}</td>
+            <td id="salary">{{row.salary | currency:$:0}}</td>
          </tr>
        </tbody>
      </table>
