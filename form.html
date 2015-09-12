@@ -1,0 +1,77 @@
+<div ng-controller="formController">
+   <h2>Insert Players</h2>
+   
+   <div class="radio">
+      <label>
+         <input type="radio" value="NBA" ng-model="radio" ng-change="radChange()">
+         NBA
+      </label>
+   </div>
+   <div class="radio">
+      <label>
+         <input type="radio" value="NFL" ng-model="radio" ng-change="radChange()">
+         NFL
+      </label>
+   </div>
+   
+   <form class="form-inline" role="form" novalidate>
+      <div class="form-group">
+         <label>Name:</label>
+         <input type="text" class="form-control" placeholder="Enter player name" ng-model="name">
+      </div>
+      
+      <div class="form-group">
+         <label>Team:</label>
+         <select class="form-control" ng-model="team">   
+            <option ng-repeat="team in teams">{{ team }}</option>     
+         </select>
+      </div>
+      
+      <div class="form-group">
+         <label>Position:</label>
+         <select class="form-control" ng-model="position">
+            <option ng-repeat="position in positions">{{ position }}</option>
+         </select>
+      </div>
+      
+      <div class="form-group">
+         <label>Salary:</label>
+         <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" placeholder="Salary (Digits Only)" ng-model="salary">
+         </div>
+      </div>
+
+      <a class="btn btn-primary" ng-click="validateForm()">Insert</a>
+      <a class="btn btn-warning"  href="#results">Generate</a>
+   </form>
+
+   <br>
+
+   <div id="error-msg">
+      <div class="alert alert-danger">
+         <a href="#" class="close" onclick="jQuery('#error-msg').fadeOut(500)">&times;</a>
+         <strong>ERROR: </strong> You didn't fill out the form correctly.
+      </div>
+   </div>
+   
+   <table class="table table-bordered table-hover">
+    <thead> 
+      <tr>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rows">
+         <td id="name">{{ row.name }}</td>
+         <td id="team">{{ row.team }}</td>
+         <td id="position">{{ row.position }}</td>
+         <td id="salary">{{ row.salary | currency:$:0 }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

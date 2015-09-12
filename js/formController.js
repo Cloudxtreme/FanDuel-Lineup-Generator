@@ -1,4 +1,4 @@
-app.controller('formController', ['$scope', '$http', 'tableService', 
+app.controller('formController', ['$scope', '$http', 'tableService',
 function($scope, $http, tableService) {
 
    console.log("formController working");

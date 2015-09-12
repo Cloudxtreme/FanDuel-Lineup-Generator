@@ -1,12 +1,9 @@
-app.config(['$routeProvider', function($routeProvider) {
+app.config(function($routeProvider) {
 
    $routeProvider.when('/', {
       controller: 'formController',
-      template: ''
-   });
-
-  $routeProvider.when('/results', {
-    controller: 'resultsController',
-    template: '<h2>We are home</h2>'
-  });
-}]);
+      templateUrl: 'file:///C:/Users/Nick/Documents/GitHub/Daily-Fantasy-Lineup-Generator/form.html'
+   })
+   .otherwise({redirectTo: '/'});
+  
+});
