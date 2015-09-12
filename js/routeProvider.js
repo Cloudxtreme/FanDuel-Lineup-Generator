@@ -5,5 +5,10 @@ app.config(function($routeProvider) {
       templateUrl: 'file:///C:/Users/Nick/Documents/GitHub/Daily-Fantasy-Lineup-Generator/form.html'
    })
    .otherwise({redirectTo: '/'});
+   
+   $routeProvider.when('/results', {
+      controller: 'formController',
+      templateUrl: 'file:///C:/Users/Nick/Documents/GitHub/Daily-Fantasy-Lineup-Generator/results.html'
+   });
   
 });
