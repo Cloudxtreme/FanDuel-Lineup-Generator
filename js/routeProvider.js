@@ -1,5 +1,7 @@
 app.config(function($routeProvider) {
 
+   console.log("routeProvider working");
+
    $routeProvider.when('/', {
       controller: 'formController',
       templateUrl: 'file:///C:/Users/Nick/Documents/GitHub/Daily-Fantasy-Lineup-Generator/form.html'
@@ -7,7 +9,7 @@ app.config(function($routeProvider) {
    .otherwise({redirectTo: '/'});
    
    $routeProvider.when('/results', {
-      controller: 'formController',
+      controller: 'resultsController',
       templateUrl: 'file:///C:/Users/Nick/Documents/GitHub/Daily-Fantasy-Lineup-Generator/results.html'
    });
   
