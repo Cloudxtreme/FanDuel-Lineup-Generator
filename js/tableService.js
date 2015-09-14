@@ -2,6 +2,7 @@ app.factory('tableService', [function() {
 
    console.log("tableService working");
    
+   var league;
    var rows = [];
    
    function row (name, team, position, salary) {

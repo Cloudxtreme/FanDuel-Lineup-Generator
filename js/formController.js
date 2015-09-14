@@ -50,7 +50,8 @@ function($scope, $http, tableService) {
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/Daily-Fantasy-Lineup-Generator/master/leagues.json")
       .success(function(response) {   
          $scope.teams = response[league].teams;
-         $scope.positions = response[league].positions;   
+         $scope.positions = response[league].positions;
+         tableService.league = league;
          resetForm();
       });
    };

@@ -10,6 +10,7 @@ function($scope, tableService) {
    else 
    {
       jQuery("#results").fadeIn(750);
+      console.log(tableService.league);
       generateResults(table);
    }
    
