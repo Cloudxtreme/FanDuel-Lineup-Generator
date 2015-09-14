@@ -19,37 +19,36 @@ function($scope, $http, tableService) {
    $scope.positions; 
    
    // the table
-   $scope.rows = tableService.rows;
+   $scope.rows = tableService.rows; 
    
    // called when user changes radio button (NBA or NFL)
-   $scope.radChange = function(){
-      if(window.confirm("This will erase your current table. Continue?"))
-      {
+   $scope.radChange = function() {
+      if(window.confirm("This will erase your current table. Continue?")) {
          tableService.clearTable();
          jQuery("#error-msg").hide();
          fillForm($scope.radio);
       }
-      else
-      {
+      else {
          $scope.radio = ($scope.radio == "NBA" ? "NFL" : "NBA");        
       }
    };
    
-   $scope.validateForm = function(){
+   $scope.validateForm = function() {
       jQuery("#error-msg").fadeOut();
-      if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === "")))
+      if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === ""))) 
       {
          jQuery("#error-msg").fadeIn(500);
       }
-      else {
+      else 
+      {
          tableService.insert($scope.name, $scope.team, $scope.position, $scope.salary);
          resetForm();
       }        
    };
    
-   var fillForm = function(league){
+   var fillForm = function(league) {
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/Daily-Fantasy-Lineup-Generator/master/leagues.json")
-      .success(function(response){   
+      .success(function(response) {   
          $scope.teams = response[league].teams;
          $scope.positions = response[league].positions;   
          resetForm();
