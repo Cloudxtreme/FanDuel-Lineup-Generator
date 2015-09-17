@@ -19,7 +19,7 @@ function($scope, $http, tableService) {
    $scope.positions; 
    
    // the table
-   $scope.rows = tableService.rows; 
+   $scope.table = tableService.table; 
    
    // called when user changes radio button (NBA or NFL)
    $scope.radChange = function() {

@@ -3,7 +3,7 @@ app.factory('tableService', [function() {
    console.log("tableService working");
    
    var league;
-   var rows = [];
+   var table = [];
    
    function row (name, team, position, salary) {
       this.name = name;
@@ -13,15 +13,15 @@ app.factory('tableService', [function() {
    }
    
    var insert = function(name, team, position, salary) {
-      rows.push(new row(name, team, position, salary));
+      table.push(new row(name, team, position, salary));
    };
    
    var clearTable = function() {
-      rows.length = 0;
+      table.length = 0;
    };
    
    var deepCopy = function() {
-      var data = rows.slice();
+      var data = table.slice();
       for(var i = 0; i < data.length; i++)
       {
          data[i] = jQuery.extend(true, {}, data[i]);
@@ -30,7 +30,7 @@ app.factory('tableService', [function() {
    };
    
    return {
-      rows: rows,
+      table: table,
       insert: insert,
       clearTable: clearTable,
       deepCopy: deepCopy
