@@ -1,7 +1,7 @@
 app.controller('formController', ['$scope', '$http', 'tableService',
 function($scope, $http, tableService) {
 
-   console.log("formController working");
+   jQuery("#infoForm").fadeIn(750);
 
    // radio button
    $scope.radio = 'NBA';
