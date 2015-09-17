@@ -23,12 +23,14 @@ function($scope, $http, tableService) {
    
    // called when user changes radio button (NBA or NFL)
    $scope.radChange = function() {
-      if(window.confirm("This will erase your current table. Continue?")) {
+      if(window.confirm("This will erase your current table. Continue?")) 
+      {
          tableService.clearTable();
          jQuery("#error-msg").hide();
          fillForm($scope.radio);
       }
-      else {
+      else 
+      {
          $scope.radio = ($scope.radio == "NBA" ? "NFL" : "NBA");        
       }
    };

@@ -20,10 +20,20 @@ app.factory('tableService', [function() {
       rows.length = 0;
    };
    
+   var deepCopy = function() {
+      var data = rows.slice();
+      for(var i = 0; i < data.length; i++)
+      {
+         data[i] = jQuery.extend(true, {}, data[i]);
+      }  
+      return data;
+   };
+   
    return {
       rows: rows,
       insert: insert,
-      clearTable: clearTable
+      clearTable: clearTable,
+      deepCopy: deepCopy
    };
    
 }]);
