@@ -1,5 +1,7 @@
-app.controller('resultsController', ['$scope', 'tableService', 
+app.controller('resultsController', ['$scope', 'tableService',
 function($scope, tableService) {
+
+   var tables = [];
 
    var data = tableService.deepCopy();
    
@@ -10,13 +12,15 @@ function($scope, tableService) {
    else 
    {
       jQuery("#results").fadeIn(750);
-      generateResults(data);
-   }
-   
-   var generateResults = function(data) {
-      
-   };
-   
+      if(tableService.league === "NFL")
+      {
+         generateNFL(data);
+      }
+      else
+      {
+         generateNBA(data);
+      }
+   } 
    
 
 }]);

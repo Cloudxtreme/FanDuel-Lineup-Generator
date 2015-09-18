@@ -28,6 +28,7 @@ app.factory('tableService', [function() {
    };
    
    return {
+      league: league,
       table: table,
       insert: insert,
       clearTable: clearTable,
