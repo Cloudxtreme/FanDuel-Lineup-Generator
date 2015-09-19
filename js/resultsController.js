@@ -1,24 +1,28 @@
-app.controller('resultsController', ['$scope', 'tableService',
-function($scope, tableService) {
+app.controller('resultsController', ['$scope', 'tableService', 'storageService',
+function($scope, tableService, storageService) {
 
-   var tables = [];
-
-   var data = tableService.deepCopy();
+   $scope.lineups = 0;
+   $scope.tables = [];
    
-   if(data.length === 0) 
+   tableService.clearTable();
+
+   var data = storageService.getData();
+   
+   
+   if(storageService.getData().length === 0) 
    {
       jQuery("#error-msg").fadeIn(750);
    }
    else 
    {
-      jQuery("#results").fadeIn(750);
+      jQuery("#results").fadeIn(750);  
       if(tableService.league === "NFL")
       {
-         generateNFL(data);
+         generateNFL(data[0]);
       }
       else
       {
-         generateNBA(data);
+         generateNBA(data[0]);
       }
    } 
    
