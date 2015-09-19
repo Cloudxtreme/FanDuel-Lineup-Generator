@@ -8,7 +8,7 @@
 
 <div id="results">
    <h1>Press back to add more players.</h1>
-   <h3>Total Lineups: </h3>
+   <h3>Total Lineups: {{ lineups }}</h3>
    <div id="resultTable" ng-repeat="table in tables">
       <table class="table table-bordered table-condensed">
          <tr ng-repeat="row in table">

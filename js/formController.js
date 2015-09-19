@@ -1,10 +1,10 @@
-app.controller('formController', ['$scope', '$http', 'tableService',
-function($scope, $http, tableService) {
+app.controller('formController', ['$scope', '$http', 'tableService', 'storageService', 
+function($scope, $http, tableService, storageService) {
 
    jQuery("#infoForm").fadeIn(750);
 
    // radio button
-   $scope.radio = 'NBA';
+   $scope.radio = tableService.league;
    
    // form values
    $scope.name;
@@ -19,13 +19,13 @@ function($scope, $http, tableService) {
    $scope.positions; 
    
    // the table
-   $scope.table = tableService.table; 
+   $scope.table = storageService.getData();
    
    // called when user changes radio button (NBA or NFL)
    $scope.radChange = function() {
       if(window.confirm("This will erase your current table. Continue?")) 
       {
-         tableService.clearTable();
+         storageService.clearData();
          jQuery("#error-msg").hide();
          fillForm($scope.radio);
       }
@@ -43,7 +43,7 @@ function($scope, $http, tableService) {
       }
       else 
       {
-         tableService.insert($scope.name, $scope.team, $scope.position, $scope.salary);
+         storageService.insert($scope.name, $scope.team, $scope.position, $scope.salary);
          resetForm();
       }        
    };

@@ -1,6 +1,6 @@
 app.factory('tableService', [function() {
    
-   var league;
+   var league = "NBA";
    var table = [];
    
    function row (name, team, position, salary) {
@@ -18,20 +18,19 @@ app.factory('tableService', [function() {
       table.length = 0;
    };
    
-   var deepCopy = function() {
-      var data = table.slice();
+   var setData = function(d) {
+      table = d.slice();
       for(var i = 0; i < data.length; i++)
       {
-         data[i] = jQuery.extend(true, {}, data[i]);
+         table[i] = jQuery.extend(true, {}, table[i]);
       }  
-      return data;
    };
    
    return {
-      table: table,
+      league: league,
       insert: insert,
       clearTable: clearTable,
-      deepCopy: deepCopy
-   };
+      setData: setData
+   }
    
 }]);
