@@ -2,6 +2,7 @@ app.factory('tableService', [function() {
    
    var league = "NBA";
    var table = [];
+   var tables = [];
    
    function row (name, team, position, salary) {
       this.name = name;
@@ -28,6 +29,7 @@ app.factory('tableService', [function() {
    
    return {
       league: league,
+      tables: tables,
       insert: insert,
       clearTable: clearTable,
       setData: setData

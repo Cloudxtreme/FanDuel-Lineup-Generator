@@ -2,12 +2,36 @@ app.controller('resultsController', ['$scope', 'tableService', 'storageService',
 function($scope, tableService, storageService) {
 
    $scope.lineups = 0;
-   $scope.tables = [];
+   $scope.tables = tableService.tables;
    
    tableService.clearTable();
 
    var data = storageService.getData();
    
+   function generate(i) {
+      
+      if(i < data.length) //if not out of bounds
+      {
+         if(tableService.insertRow(data[i])) //if row can be inserted
+         {
+            if(tableService.insertTable()) //if table is filled/valid
+            {
+               tableService.pop();
+               generate(i+1);
+            }
+            else //table is not yet valid
+            {
+               generate(i+1);
+            }
+         }
+         else
+         {
+            generate(i+1);
+         }
+      }
+      
+      return;
+   }
    
    if(storageService.getData().length === 0) 
    {
@@ -16,14 +40,7 @@ function($scope, tableService, storageService) {
    else 
    {
       jQuery("#results").fadeIn(750);  
-      if(tableService.league === "NFL")
-      {
-         generateNFL(data[0]);
-      }
-      else
-      {
-         generateNBA(data[0]);
-      }
+      generate(0);
    } 
    
 
