@@ -1,0 +1,25 @@
+{
+   "rules": {
+      "NFL": {
+         "cap": 60000,
+         "QB": 1,
+         "RB": 2,
+         "WR": 3,
+         "TE": 1,
+         "K": 1,
+         "DEF": 1,
+         "minTeams": 3,
+         "maxPlayers": 4
+      },
+      "NBA": {
+         "cap": 60000,
+         "PG": 2,
+         "SG": 2,
+         "SF": 2,
+         "PF": 2,
+         "C": 1,
+         "minTeams": 3,
+         "maxPlayers": 4
+      }
+   }
+}
