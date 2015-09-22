@@ -1,0 +1,20 @@
+.table th, .table td, table, .table {
+   width: auto !important;
+   margin: auto;
+   text-align: center; 
+}
+.alert {
+   display: inline-block;
+}
+.close {
+   padding-left: 5px;
+}
+#error-msg {
+   display: none;
+}
+#resultTable {
+   display: inline;
+}
+#error-msg, #results, #infoForm {
+   display: none;
+}
