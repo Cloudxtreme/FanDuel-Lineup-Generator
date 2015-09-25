@@ -9,9 +9,6 @@
 .close {
    padding-left: 5px;
 }
-#error-msg {
-   display: none;
-}
 #resultTable {
    display: inline;
 }
