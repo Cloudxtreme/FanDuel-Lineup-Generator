@@ -1,14 +1,18 @@
-app.factory('tableService', [function() {
+app.factory('tableService', ['$http',
+function($http) {
    
    var league = "NBA"; //default value, may switch to NFL
    var table = [];
    var tables = [];
    
    var salary = 0;
-   var rulesData = {
-      teams: {},
-      playersOnTeam: {}
-   };
+   var rules;
+   var rulesData = {};
+   
+   $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/rules.json")
+   .success(function(response) {   
+      rules = response;
+   });
    
    function row (name, team, position, salary) {
       this.name = name;
@@ -17,32 +21,38 @@ app.factory('tableService', [function() {
       this.salary = salary;
    }
    
-   function insertRow(row) {
-      if(row.salary + salary <= 60000)
+   function aSpotIsOpenFor(position) {
+      var i = 0;
+   
+      for(var row in table)
       {
-         for (var teamUsed in rulesData.teams)
+         if(row.position === position)
          {
-            if(rulesData.teams.hasOwnProperty(teamUsed) &&
-            teamUsed < 3)
-            {
-               return false;
-            }
+            i++;
          }
-         
-         for (var playersPerTeam in rulesData.playersOnTeam)
-         {
-            if(rulesData.playersOnTeam.hasOwnProperty(playersPerTeam) &&
-            playersPerTeam > 4)
-            {
-               return false;
-            }
-         }
+      }
       
-         table.push(row);
-         rulesData.teams[row.team] += 1;
-         rulesData.playersOnTeam[row.team] += 1;
+      if(i < rules[position])
+      {
          return true;
       }
+      
+      return false;
+   }
+   
+   function insertRow(row) {
+      if(row.salary + salary <= 60000 && aSpotIsOpenFor(row.position))
+      {
+         table.push(row);
+         rulesData[row.team] += 1;
+         return true;
+      }
+      
+      return false;
+   }
+   
+   function insertTable() {
+      
    }
    
    function clearTable() {
