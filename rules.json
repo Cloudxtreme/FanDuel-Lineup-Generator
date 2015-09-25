@@ -6,18 +6,14 @@
          "WR": 3,
          "TE": 1,
          "K": 1,
-         "DEF": 1,
-         "minTeams": 3,
-         "maxPlayers": 4
+         "DEF": 1
       },
       "NBA": {
          "PG": 2,
          "SG": 2,
          "SF": 2,
          "PF": 2,
-         "C": 1,
-         "minTeams": 3,
-         "maxPlayers": 4
+         "C": 1
       }
    }
 }
