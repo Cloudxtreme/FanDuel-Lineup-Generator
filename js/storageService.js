@@ -1,5 +1,6 @@
 app.factory('storageService', [function() {
 
+   var league = "NBA";
    var data = [];
    
    var clearData = function() {
@@ -22,6 +23,7 @@ app.factory('storageService', [function() {
    };
 
    return {
+      league: league,
       clearData: clearData,
       getData: getData,
       insert: insert

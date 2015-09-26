@@ -4,8 +4,8 @@ function($scope, tableService, storageService) {
    $scope.lineups = 0;
    $scope.tables = tableService.tables;
    
-   tableService.clearTable();
-
+   //tableService.clearTable();
+   tableService.league = storageService.league;
    var data = storageService.getData();
    
    function generate(i) {
@@ -16,6 +16,7 @@ function($scope, tableService, storageService) {
          {
             if(tableService.insertTable()) //if table is filled/valid
             {
+               $scope.lineups++;
                tableService.pop();
                generate(i+1);
             }

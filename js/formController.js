@@ -1,10 +1,10 @@
-app.controller('formController', ['$scope', '$http', 'tableService', 'storageService', 
-function($scope, $http, tableService, storageService) {
+app.controller('formController', ['$scope', '$http', 'storageService', 
+function($scope, $http, storageService) {
 
    jQuery("#infoForm").fadeIn(750);
 
    // radio button
-   $scope.radio = tableService.league;
+   $scope.radio = storageService.league;
    
    // form values
    $scope.name;
@@ -53,7 +53,7 @@ function($scope, $http, tableService, storageService) {
       .success(function(response) {   
          $scope.teams = response[league].teams;
          $scope.positions = response[league].positions;
-         tableService.league = league;
+         storageService.league = league;
          resetForm();
       });
    };

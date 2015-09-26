@@ -1,11 +1,9 @@
 app.factory('tableService', ['$http',
 function($http) {
    
-   var league = "NBA"; //default value, may switch to NFL
+   var league;
    var table = [];
    var tables = [];
-   
-   var salary = 0;
    var rules;
    
    $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/rules.json")
@@ -13,14 +11,13 @@ function($http) {
       rules = response;
    });
    
-   function getSalary() {
-      var salary = 0;
-      
+   function salaryCapRule(playerSalary) {
+      var tableSalary = 0;   
       for(var i = 0; i < table.length; i++)
       {      
-         salary += table[i].salary;
+         tableSalary += table[i].salary;
       }   
-      return salary;   
+      return (tableSalary + playerSalary <= 60000)   
    }
    
    function aSpotIsOpenFor(position) {
@@ -32,40 +29,44 @@ function($http) {
             j++;
          }
       }    
-      return(j < rules[position]);
+      return(j < rules[league][position]);
    } 
 
-   function teamsRepresented() {
+   function threeTeamsRule() {
       var teams = {};
       for(var i = 0; i < table.length; i++)
       {
          teams[table[i].team];
       }
-      return (Object.key(teams).length);
+      return (Object.key(teams).length >= 3);
    }
    
    function fourOrLessRule() {
-      var playersOnTeam = {};
+      var tableOfTeams = {};
       for(var i = 0; i < table.length; i++)
       {
-         if(playersOnTeam.hasOwnProperty(table[i].team))
+         if(tableOfTeams.hasOwnProperty(table[i].team))
          {
-            playersOnTeam[table[i].team]++;
+            tableOfTeams[table[i].team]++;
          }
          else
          {
-            playersOnTeam[table[i].team] = 1;
+            tableOfTeams[table[i].team] = 1;
          }
       }
-      for(var team in playersOnTeam)
+      for(var team in tableOfTeams)
       {
-         if(playersOnTeam.hasOwnProperty(team) && team > 4)
+         if(tableOfTeams.hasOwnProperty(team) && team > 4)
          {
             return false;
          }
       }
       
       return true;
+   }
+   
+   function noSpotsOpen() {
+      return (table.length === 9);
    }
    
    function row (name, team, position, salary) {
@@ -76,7 +77,7 @@ function($http) {
    }   
    
    function insertRow(row) {
-      if(((row.salary + getSalary()) <= 60000) && (aSpotIsOpenFor(row.position)))
+      if(salaryCapRule(row.salary) && aSpotIsOpenFor(row.position))
       {
          table.push(row);
          return true;
@@ -85,7 +86,7 @@ function($http) {
    }
    
    function insertTable() {
-      if((teamsRepresented() >= 3) && fourOrLessRule())
+      if(noSpotsOpen() && threeTeamsRule() && fourOrLessRule())
       {  
          tables.push(table);
          return true;
