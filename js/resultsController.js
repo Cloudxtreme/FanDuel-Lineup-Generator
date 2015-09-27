@@ -7,28 +7,31 @@ function($scope, $http, tableService, storageService) {
    
    function generate(i) {
       
-      if(i < data.length) //if not out of bounds
+      if(i < data.length) 
       {
-         if(tableService.insertRow(data[i])) //if row can be inserted
+         if(tableService.insertRow(data[i]))
          {
-            if(tableService.insertTable()) //if table is filled/valid
+            if(tableService.insertTable())
             {
-               $scope.lineups++;
-               tableService.pop();
-               generate(i+1);
+               
             }
-            else //table is not yet valid
+            else
             {
-               generate(i+1);
+               
             }
+            
          }
          else
          {
-            generate(i+1);
+         
          }
+         
       }
+      else
+      {
       
-      return;
+      }
+ 
    }
    
    if(storageService.getData().length === 0) 
