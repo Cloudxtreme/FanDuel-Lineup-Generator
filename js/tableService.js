@@ -1,15 +1,22 @@
-app.factory('tableService', ['$http',
-function($http) {
+app.factory('tableService', [
+function() {
    
    var league;
    var table = [];
    var tables = [];
    var rules;
    
-   $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/rules.json")
-   .success(function(response) {   
-      rules = response;
-   });
+   function setLeague(l) {
+      league = l;
+   }
+   
+   function setRules(r) {
+      rules = r;
+   }
+   
+   function getTables() {
+      return tables;
+   }
    
    function salaryCapRule(playerSalary) {
       var tableSalary = 0;   
@@ -94,21 +101,16 @@ function($http) {
       return false;
    }
    
-   function clearTable() {
-      table.length = 0;
-      tables.length = 0;
-   }
-   
    function pop() {
       table.pop();
    }
    
    return {
-      league: league,
-      tables: tables,
+      setLeague: setLeague,
+      setRules: setRules,
+      getTables: getTables,
       insertRow: insertRow,
       insertTable: insertTable,
-      clearTable: clearTable,
       pop: pop
    }
    
