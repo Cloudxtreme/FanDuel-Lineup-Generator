@@ -22,9 +22,9 @@ function() {
       var tableSalary = 0;   
       for(var i = 0; i < table.length; i++)
       {      
-         tableSalary += table[i].salary;
+         tableSalary += Number(table[i].salary);
       }   
-      return (tableSalary + playerSalary <= 60000)   
+      return (tableSalary + Number(playerSalary) <= 60000)   
    }
    
    function aSpotIsOpenFor(position) {
@@ -43,9 +43,9 @@ function() {
       var teams = {};
       for(var i = 0; i < table.length; i++)
       {
-         teams[table[i].team];
+         teams[table[i].team] = 0;
       }
-      return (Object.key(teams).length >= 3);
+      return (Object.keys(teams).length >= 3);
    }
    
    function fourOrLessRule() {

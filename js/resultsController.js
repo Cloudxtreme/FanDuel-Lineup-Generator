@@ -2,7 +2,7 @@ app.controller('resultsController', ['$scope', '$http', 'tableService', 'storage
 function($scope, $http, tableService, storageService) {
 
    $scope.lineups = 0;
-  
+   
    var data = storageService.getData();
    
    function generate(i) {
@@ -13,23 +13,28 @@ function($scope, $http, tableService, storageService) {
          {
             if(tableService.insertTable())
             {
-               
+               $scope.lineups++;
+               tableService.pop();
+               generate(i+1); //here
+               return;
             }
             else
             {
-               
+               generate(i+1);
             }
             
          }
          else
          {
-         
+            generate(i+1);
+            tableService.pop();
+            generate(i);
          }
          
       }
       else
       {
-      
+         return;
       }
  
    }

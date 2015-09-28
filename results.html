@@ -9,13 +9,22 @@
 <div id="results">
    <h1>Press back to add more players.</h1>
    <h3>Total Lineups: {{ lineups }}</h3>
-   <div id="resultTable" ng-repeat="table in tables">
+   <div id="resultTable" ng-repeat="table in tables track by $index">
       <table class="table table-bordered table-condensed">
-         <tr ng-repeat="row in table">
-            <td>{{ row.name }}</td>
-            <td>{{ row.team }}</td>
-            <td>{{ row.salary }}</td>
-         </tr>
+         <thead> 
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Salary</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="row in table track by $index">
+               <td>{{ row.name }}</td>
+               <td>{{ row.position }}</td>
+               <td>{{ row.salary }}</td>
+            </tr>
+         </tbody>
       </table>
    </div>
 </div>
