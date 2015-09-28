@@ -24,7 +24,7 @@
          "SD", "SEA", "SF", "STL", "TB", 
          "TEN", "WAS"
       ],
-      "positions": ["QB", "RB", "WR", "TE", "K", "D"]
+      "positions": ["QB", "RB", "WR", "TE", "K", "DEF"]
    
    }
 }
