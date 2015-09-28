@@ -1,0 +1,56 @@
+[
+   {
+      "name": "Chris Paul",
+      "team": "LAC",
+      "position": "PG",
+      "salary": "5600"
+   },
+   {
+      "name": "Tony Parker",
+      "team": "SAS",
+      "position": "PG",
+      "salary": "5400"
+   },
+   {
+      "name": "Klay Thompson",
+      "team": "GSW",
+      "position": "SG",
+      "salary": "6000"
+   },
+   {
+      "name": "James Harden",
+      "team": "HOU",
+      "position": "SG",
+      "salary": "5300"
+   },
+   {
+      "name": "LeBron James",
+      "team": "CLE",
+      "position": "SF",
+      "salary": "6300"
+   },
+   {
+      "name": "Kevin Durant",
+      "team": "OKC",
+      "position": "SF",
+      "salary": "5200"
+   },
+   {
+      "name": "Lamar Odum",
+      "team": "LAL",
+      "position": "PF",
+      "salary": "4500"
+   },
+   {
+      "name": "Greg Monroe",
+      "team": "DET",
+      "position": "PF",
+      "salary": "5500"
+   },
+   {
+      "name": "Anthony Davis",
+      "team": "NOP",
+      "position": "C",
+      "salary": "6700"
+   }
+]
