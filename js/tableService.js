@@ -63,7 +63,7 @@ function() {
       }
       for(var team in tableOfTeams)
       {
-         if(tableOfTeams.hasOwnProperty(team) && team > 4)
+         if(tableOfTeams.hasOwnProperty(team) && tableOfTeams[team] > 4)
          {
             return false;
          }
