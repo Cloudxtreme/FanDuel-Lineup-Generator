@@ -22,7 +22,7 @@
             <tr ng-repeat="row in table track by $index">
                <td>{{ row.name }}</td>
                <td>{{ row.position }}</td>
-               <td>{{ row.salary }}</td>
+               <td>{{ row.salary | currency:$:0 }}</td>
             </tr>
          </tbody>
       </table>

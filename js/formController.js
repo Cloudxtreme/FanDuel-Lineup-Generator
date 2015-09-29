@@ -49,7 +49,7 @@ function($scope, $http, storageService) {
    };
    
    var fillForm = function(league) {
-      $http.get("https://raw.githubusercontent.com/NicholasPurdy/Daily-Fantasy-Lineup-Generator/master/leagues.json")
+      $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/leagues.json")
       .success(function(response) {   
          $scope.teams = response[league].teams;
          $scope.positions = response[league].positions;

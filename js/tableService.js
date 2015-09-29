@@ -95,7 +95,7 @@ function() {
    function insertTable() {
       if(noSpotsOpen() && threeTeamsRule() && fourOrLessRule())
       {  
-         tables.push(table);
+         tables.push(jQuery.extend(true, {}, table));
          return true;
       }    
       return false;
@@ -105,13 +105,19 @@ function() {
       table.pop();
    }
    
+   function clearTable() {
+      table.length = 0;
+      tables. length = 0;
+   }
+   
    return {
       setLeague: setLeague,
       setRules: setRules,
       getTables: getTables,
       insertRow: insertRow,
       insertTable: insertTable,
-      pop: pop
+      pop: pop,
+      clearTable: clearTable
    }
    
 }]);
