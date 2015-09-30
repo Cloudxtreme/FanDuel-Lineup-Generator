@@ -36,6 +36,12 @@
       "salary": "5200"
    },
    {
+      "name": "Andrew Wiggins",
+      "team": "MIN",
+      "position": "SF",
+      "salary": "5300"      
+   },
+   {
       "name": "Lamar Odum",
       "team": "LAL",
       "position": "PF",
@@ -51,6 +57,12 @@
       "name": "Anthony Davis",
       "team": "NOP",
       "position": "C",
-      "salary": "6700"
-   }
+      "salary": "5700"
+   },
+   {
+      "name": "Jalil Okafor",
+      "team": "PHI",
+      "position": "C",
+      "salary": "5800"
+   }   
 ]

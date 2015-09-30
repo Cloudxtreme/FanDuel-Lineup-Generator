@@ -48,6 +48,10 @@ function($scope, $http, storageService) {
       }        
    };
    
+   $scope.remove = function(row) {
+      storageService.remove(row);      
+   };
+   
    var fillForm = function(league) {
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/leagues.json")
       .success(function(response) {   

@@ -11,22 +11,22 @@ function($scope, $http, tableService, storageService) {
             {
                $scope.lineups++;
                tableService.pop();
-               generate(i+1);
-               return;
-            }
-            else
-            {
-               generate(i+1);
-            }         
-         }
+            } 
+            
+            generate(i+1);
+            tableService.pop();
+            return;
+
+         }//if(tableService.insertRow(data[i]))
          else
          {
-
-         }  
+            generate(i+1);
+            generate(i-1);
+         }
          
-      }
- 
-   }
+      }//if(i < data.length)
+      
+   }//generate(i
    
    var data = storageService.getData();
    

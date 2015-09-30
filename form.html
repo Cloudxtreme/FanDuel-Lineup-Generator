@@ -70,6 +70,7 @@
          <td id="team">{{ row.team }}</td>
          <td id="position">{{ row.position }}</td>
          <td id="salary">{{ row.salary | currency:$:0 }}</td>
+         <td><a class="btn btn-danger btn-xs" ng-click="remove(row)">Delete</a></td>
       </tr>
     </tbody>
   </table>
