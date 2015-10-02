@@ -1,7 +1,7 @@
 app.controller('formController', ['$scope', '$http', 'storageService', 
 function($scope, $http, storageService) {
 
-   jQuery("#infoForm").fadeIn(750);
+   jQuery("#infoForm").fadeIn(1000);
 
    // radio button
    $scope.radio = storageService.league;

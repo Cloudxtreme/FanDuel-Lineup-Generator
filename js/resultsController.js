@@ -2,37 +2,42 @@ app.controller('resultsController', ['$scope', '$http', 'tableService', 'storage
 function($scope, $http, tableService, storageService) {
    
    function generate(i) {  
-   
-      if(i < data.length) 
+      if(i >= data.length)   
       {
-         if(tableService.insertRow(data[i]))
+         return;
+      }
+      
+      if(tableService.insertRow(data[i]))
+      {
+      
+         if(tableService.insertTable())
          {
-            if(tableService.insertTable())
-            {
-               $scope.lineups++;
-               tableService.pop();
-            } 
-            
-            generate(i+1);
+            $scope.lineups++;
             tableService.pop();
-            return;
-
-         }//if(tableService.insertRow(data[i]))
+            generate(i+1);
+         } 
          else
          {
             generate(i+1);
-            generate(i-1);
+            tableService.pop();
+            generate(i+1);
          }
          
-      }//if(i < data.length)
+      }
+      else
+      {
+         generate(i+1);
+      }
       
    }//generate(i
    
+   
+   
    var data = storageService.getData();
    
-   if(storageService.getData().length === 0) 
+   if(data.length === 0) 
    {
-      jQuery("#error-msg").fadeIn(750);
+      jQuery("#error-msg").fadeIn(1000);
    }
    else
    {
@@ -40,11 +45,11 @@ function($scope, $http, tableService, storageService) {
       .success(function(response) {   
          tableService.setRules(response.rules);
          tableService.setLeague(storageService.league);
-         jQuery("#results").fadeIn(750);
          tableService.clearTable();     
          $scope.lineups = 0;
          generate(0);
          $scope.tables = tableService.getTables();
+         jQuery("#results").fadeIn(1000);
       });
    } 
    

@@ -18,6 +18,18 @@
       "salary": "6000"
    },
    {
+      "name": "Russel Westbrook",
+      "team": "OKC",
+      "position": "SG",
+      "salary": "5800"
+   },
+   {
+      "name": "Manu Ginobli",
+      "team": "SAS",
+      "position": "SG",
+      "salary": "4500"
+   },   
+   {
       "name": "James Harden",
       "team": "HOU",
       "position": "SG",
@@ -28,12 +40,6 @@
       "team": "CLE",
       "position": "SF",
       "salary": "6300"
-   },
-   {
-      "name": "Kevin Durant",
-      "team": "OKC",
-      "position": "SF",
-      "salary": "5200"
    },
    {
       "name": "Andrew Wiggins",
@@ -54,6 +60,12 @@
       "salary": "5500"
    },
    {
+      "name": "David West",
+      "team": "IND",
+      "position": "PF",
+      "salary": "6100"
+   },
+   {
       "name": "Anthony Davis",
       "team": "NOP",
       "position": "C",
@@ -64,5 +76,11 @@
       "team": "PHI",
       "position": "C",
       "salary": "5800"
-   }   
+   },
+   {
+      "name": "Demarcus Cousins",
+      "team": "SAC",
+      "position": "C",
+      "salary": "6300"
+   }
 ]
