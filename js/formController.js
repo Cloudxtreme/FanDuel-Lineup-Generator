@@ -1,8 +1,6 @@
 app.controller('formController', ['$scope', '$http', 'storageService', 
 function($scope, $http, storageService) {
 
-   jQuery("#infoForm").fadeIn(1000);
-
    // radio button
    $scope.radio = storageService.league;
    
@@ -52,6 +50,13 @@ function($scope, $http, storageService) {
       storageService.remove(row);      
    };
    
+   var resetForm = function() {
+      $scope.name = "";
+      $scope.salary = "";
+      $scope.team = $scope.teams[0];
+      $scope.position = $scope.positions[0];
+   };   
+   
    var fillForm = function(league) {
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/leagues.json")
       .success(function(response) {   
@@ -59,15 +64,9 @@ function($scope, $http, storageService) {
          $scope.positions = response[league].positions;
          storageService.league = league;
          resetForm();
+         jQuery("#infoForm").fadeIn(1000);
       });
    };
    fillForm($scope.radio);
-   
-   var resetForm = function() {
-      $scope.name = "";
-      $scope.salary = "";
-      $scope.team = $scope.teams[0];
-      $scope.position = $scope.positions[0];
-   };
  
 }]);
