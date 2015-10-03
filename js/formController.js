@@ -34,10 +34,10 @@ function($scope, $http, storageService) {
    };
    
    $scope.validateForm = function() {
-      jQuery("#error-msg").fadeOut();
+      jQuery("#error-msg").slideUp(500);
       if(($scope.name === "") || (isNaN($scope.salary) || ($scope.salary === ""))) 
       {
-         jQuery("#error-msg").fadeIn(500);
+         jQuery("#error-msg").slideDown(500);
       }
       else 
       {
@@ -64,7 +64,7 @@ function($scope, $http, storageService) {
          $scope.positions = response[league].positions;
          storageService.league = league;
          resetForm();
-         jQuery("#infoForm").fadeIn(1000);
+         jQuery("#infoForm").fadeIn(750);
       });
    };
    fillForm($scope.radio);

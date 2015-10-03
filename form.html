@@ -50,14 +50,15 @@
 
    <div id="error-msg">
       <div class="alert alert-danger">
-         <a href="#/" class="close" onclick="jQuery('#error-msg').fadeOut(500)">&times;</a>
+         <a href="#/" class="close" onclick="jQuery('#error-msg').slideUp(500)">&times;</a>
          <strong>ERROR: </strong> You didn't fill out the form correctly.
       </div>
    </div>
    
-   <table class="table table-bordered table-hover">
+   <table class="table table-bordered table-hover table-condensed">
     <thead> 
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Team</th>
         <th>Position</th>
@@ -66,6 +67,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="row in table">
+         <td>{{ $index + 1 }}</td>
          <td id="name">{{ row.name }}</td>
          <td id="team">{{ row.team }}</td>
          <td id="position">{{ row.position }}</td>

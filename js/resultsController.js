@@ -17,7 +17,7 @@ function($scope, $http, tableService, storageService) {
             tableService.pop();
          }
       }
-      generate(i+1);      
+      generate(i+1);    
    }
    
    var data = storageService.getData();
@@ -31,14 +31,12 @@ function($scope, $http, tableService, storageService) {
       $http.get("https://raw.githubusercontent.com/NicholasPurdy/FanDuel-Lineup-Generator/master/rules.json")
       .success(function(response) {   
          tableService.setRules(response.rules);
-         tableService.setLeague(storageService.league);
-         tableService.clearTable();     
+         tableService.setLeague(storageService.league);           
          $scope.lineups = 0;
-         
+         tableService.clearTable();
          generate();
-         $scope.tables = tableService.getTables();
-         jQuery("#results").fadeIn(1000);  
-           
+         $scope.tables = tableService.getTables();     
+         jQuery("#results").fadeIn(1000);                               
       });
    } 
    
