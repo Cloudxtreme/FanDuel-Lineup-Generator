@@ -1,37 +1,24 @@
 app.controller('resultsController', ['$scope', '$http', 'tableService', 'storageService',
 function($scope, $http, tableService, storageService) {
    
-   function generate(i) {  
-      if(i >= data.length)   
-      {
-         return;
-      }
+   function generate(i=0) {  
+      if(i >= data.length) return;
       
       if(tableService.insertRow(data[i]))
-      {
-      
+      { 
          if(tableService.insertTable())
          {
             $scope.lineups++;
             tableService.pop();
-            generate(i+1);
          } 
          else
          {
             generate(i+1);
             tableService.pop();
-            generate(i+1);
          }
-         
       }
-      else
-      {
-         generate(i+1);
-      }
-      
-   }//generate(i
-   
-   
+      generate(i+1);      
+   }
    
    var data = storageService.getData();
    
@@ -47,9 +34,11 @@ function($scope, $http, tableService, storageService) {
          tableService.setLeague(storageService.league);
          tableService.clearTable();     
          $scope.lineups = 0;
-         generate(0);
+         
+         generate();
          $scope.tables = tableService.getTables();
-         jQuery("#results").fadeIn(1000);
+         jQuery("#results").fadeIn(1000);  
+           
       });
    } 
    
