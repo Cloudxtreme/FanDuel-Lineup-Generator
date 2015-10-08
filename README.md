@@ -54,3 +54,8 @@ that the script is taking too long. Click continue and the algorithm should fini
 <b>tableService.js - </b>Provides contains two arrays, one array which represents a lineup 
 that checks for validity when trying to insert players into it, and array of lineups that
 checks for further validity. This second array is the results.<br>
+
+
+# LIVE DEMO
+
+<a href="http://www.nicholaspurdy.net/webapps/lineupapp/view.html#/">http://www.nicholaspurdy.net/webapps/lineupapp/view.html#/</a>
