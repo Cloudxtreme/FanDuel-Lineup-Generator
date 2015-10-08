@@ -45,7 +45,7 @@ that the script is taking too long. Click continue and the algorithm should fini
 
 <b>leagues.json - </b>This contains the data on what teams and positions are in each league.<br>
 <b>rules.json - </b>This contains the rules in regards to how many of each position is allowed.<br>
-<b>testCase.json - </b>Set this object equal to <b>var data</b> in storageProvider.js to have play set of data to work with.<br>
+<b>testCase.json - </b>Assign this object to <b>var data</b> in storageProvider.js to have play set of data to work with.<br>
 
 <b>formController.js - </b>Sole controller for the insert screen.<br>
 <b>resultsController.js - </b>Controller used for the results screen, contains the generate function.<br>
