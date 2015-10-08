@@ -51,7 +51,7 @@ that the script is taking too long. Click continue and the algorithm should fini
 <b>resultsController.js - </b>Controller used for the results screen, contains the generate function.<br>
 <b>routeProvider.js - </b>File name is self explanatory.<br>
 <b>storageService.js - </b>Used to transfer data between the two controllers.<br>
-<b>tableService.js - </b>Provides contains two arrays, one array which represents a lineup 
+<b>tableService.js - </b>Contains two arrays, one array which represents a lineup 
 that checks for validity when trying to insert players into it, and array of lineups that
 checks for further validity. This second array is the results.<br>
 
